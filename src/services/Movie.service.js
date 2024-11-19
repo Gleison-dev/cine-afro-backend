@@ -105,7 +105,7 @@ class MovieService {
     }
   }
 
-  async getMovieByActor(actors) {
+  async getMovieByActorService(actors) {
     try {
       const verifyMovieExists = await MovieEntity.findOne({
         where: {
@@ -125,4 +125,23 @@ class MovieService {
       return console.error(error);
     }
   }
+
+  async deleteMovieService(id) {
+    try {
+      const movieId = await MovieEntity.findByPk(id);
+      if (!movieId) {
+        return `${ERRORS.NOT_FOUND}`;
+      }
+      const deleteMovie = await MovieEntity.destroy({
+        where: {
+          id,
+        },
+      });
+      return `${SUCESS.DELETED}`;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
+
+export { MovieService };
