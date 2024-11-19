@@ -35,6 +35,10 @@ const MovieEntity = database.define("tb_movies", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  trailer: {
+    type: DataTypes.STRING,
+    allowNull: true
+  }
 });
 
 export { MovieEntity };
