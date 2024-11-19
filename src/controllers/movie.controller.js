@@ -3,7 +3,7 @@ import { MovieService } from "../services/Movie.service.js";
 const instanceMovieService = new MovieService();
 
 const createMovie = async (req, res) => {
-  const { title, genre, director, synopsis, year_release, actors, watch } =
+  const { title, genre, director, synopsis, year_release, actors, watch, trailer } =
     req.body;
   const newMovie = await instanceMovieService.createMovieService(
     title,
@@ -12,7 +12,8 @@ const createMovie = async (req, res) => {
     synopsis,
     year_release,
     actors,
-    watch
+    watch,
+    trailer
   );
   res.status(201).json({ newMovie });
 };

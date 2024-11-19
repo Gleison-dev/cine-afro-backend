@@ -9,7 +9,8 @@ class MovieService {
     synopsis,
     year_release,
     actors,
-    watch
+    watch,
+    trailer
   ) {
     try {
       await MovieEntity.sync();
@@ -30,6 +31,7 @@ class MovieService {
         year_release,
         actors,
         watch,
+        trailer
       });
       return `${SUCESS.CREATED}`;
     } catch (error) {
