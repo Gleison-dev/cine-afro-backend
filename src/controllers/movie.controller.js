@@ -48,7 +48,7 @@ const getMovieByDirector = async (req, res) => {
   const movieByDirector = await instanceMovieService.getMovieByDirectorService(
     director
   );
-  res.json({ director });
+  res.json({ movieByDirector });
 };
 
 const getMovieByActor = async (req, res) => {
