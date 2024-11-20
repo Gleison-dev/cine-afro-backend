@@ -60,7 +60,7 @@ const getMovieByActor = async (req, res) => {
 const deleteMovie = async (req, res) => {
   const { id } = req.query;
   const deletedMovie = await instanceMovieService.deleteMovieService(id);
-  res.json({ deleteMovie });
+  res.json({ deletedMovie });
 };
 
 export { createMovie, getAllMovies, getMovieByActor, getMovieByDirector, getMovieByGenre, getMovieByTitle, deleteMovie }
