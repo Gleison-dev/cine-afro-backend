@@ -31,7 +31,7 @@ class MovieService {
         year_release,
         actors,
         watch,
-        trailer
+        trailer,
       });
       return `${SUCESS.CREATED}`;
     } catch (error) {
@@ -43,13 +43,15 @@ class MovieService {
     try {
       const movies = await MovieEntity.findAll();
       return movies;
-    } catch (error) {}
+    } catch (error) {
+      return console.error(error);
+    }
   }
 
   async getMovieByTitleService(title) {
     try {
       const verifyMovieExists = await MovieEntity.findOne({
-        where: title,
+        where: { title },
       });
       if (!verifyMovieExists) {
         return `${ERRORS.NOT_FOUND}`;
