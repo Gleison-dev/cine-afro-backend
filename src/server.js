@@ -15,5 +15,5 @@ app.use(router);
 
 app.listen(port, () => {
   testConnection();
-  console.log("Servidor rodando!");
+  console.log("Servidor rodando.");
 });
