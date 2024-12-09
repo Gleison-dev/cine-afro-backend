@@ -82,6 +82,7 @@ class MovieService {
           genre,
         },
       });
+      return movieByGenre;
     } catch (error) {
       return console.error(error);
     }
