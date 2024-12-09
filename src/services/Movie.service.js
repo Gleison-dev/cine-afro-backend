@@ -99,7 +99,7 @@ class MovieService {
           id,
         },
       });
-      return `Livro ${SUCESS.DELETED}`;
+      return `Filme ${SUCESS.DELETED}`;
     } catch (error) {
       return console.error(error);
     }
