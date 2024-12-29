@@ -1,5 +1,6 @@
 import { MovieEntity } from "../entities/Movie.entity.js";
 import { ERRORS, SUCESS } from "../shared/movie.message.js";
+import { Op } from "sequelize";
 
 class MovieService {
   async createMovieService(
