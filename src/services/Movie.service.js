@@ -48,22 +48,23 @@ class MovieService {
 
   async getMovieByTitleService(title) {
     try {
-      const verifyMovieByTitle = await MovieEntity.findOne({
-        where: {
-          title,
-        },
-      });
-      if (!verifyMovieByTitle) {
-        return `Filme ${ERRORS.NOT_FOUND}`;
-      }
+      const lowerCaseTitle = title.toLowerCase();
       const movieByTitle = await MovieEntity.findAll({
         where: {
-          title,
+          title: {
+            [Op.iLike]: `%${lowerCaseTitle}%`,
+          },
         },
       });
+
+      if (movieByTitle.length === 0) {
+        return `Filme ${ERRORS.NOT_FOUND}`;
+      }
+
       return movieByTitle;
     } catch (error) {
-      return console.error(error);
+      console.error(error);
+      return null;
     }
   }
 
