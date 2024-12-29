@@ -3,6 +3,14 @@ import { ERRORS, SUCESS } from "../shared/movie.message.js";
 import { Op } from "sequelize";
 
 class MovieService {
+  // Função para normalizar strings
+  normalizeString(str) {
+    return str
+      .normalize("NFD") // Normaliza a string
+      .replace(/[\u0300-\u036f]/g, "") // Remove acentuação
+      .replace(/-/g, " "); // Substitui hífens por espaços
+  }
+
   async createMovieService(
     title,
     genre,
@@ -50,11 +58,14 @@ class MovieService {
   async getMovieByTitleService(title) {
     try {
       const lowerCaseTitle = title.toLowerCase();
+      const normalizedTitle = normalizeString(lowerCaseTitle);
+
       const movieByTitle = await MovieEntity.findAll({
         where: {
-          title: {
-            [Op.iLike]: `%${lowerCaseTitle}%`,
-          },
+          [Op.or]: [
+            { title: { [Op.iLike]: `%${lowerCaseTitle}%` } },
+            { title: { [Op.iLike]: `%${normalizedTitle}%` } },
+          ],
         },
       });
 
@@ -64,7 +75,7 @@ class MovieService {
 
       return movieByTitle;
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao buscar filme por título:", error);
       return null;
     }
   }
