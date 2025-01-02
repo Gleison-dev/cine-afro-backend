@@ -86,7 +86,7 @@ Como instalar, configurar o projeto e rodar o projeto.
     PGDATABASE=nome_do_banco
     PGUSER=seu_usuário
     PGPASSWORD=senha_do_banco
-    PORT=porta do server (express)
+    PORT=porta_do_server (express)
 ```
 
 #### 5. Execute o projeto em modo desenvolvimento
