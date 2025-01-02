@@ -97,6 +97,8 @@ Como instalar, configurar o projeto e rodar o projeto.
 
 **Back-end:** Node.js, Express.js, Sequelize, Postgres
 
+## Cineafro - Frontend
+[Link do reposiório](https://github.com/Gleison-dev/cine-afro-frontend)
 
 ## Autor
 
